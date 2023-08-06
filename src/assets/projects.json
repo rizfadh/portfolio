@@ -1,0 +1,38 @@
+[
+    {
+        "imgUrl": "/bengkelin.jpg",
+        "title": "Bengkelin",
+        "body": "Android application for booking nearby workshop based on user location and analyze tire condition using machine learning",
+        "link": "https://github.com/rizfadh/bengkelin"
+    },
+    {
+        "imgUrl": "/dicostory.jpg",
+        "title": "Dicostory",
+        "body": "Android application for sharing user's stories like instagram",
+        "link": "https://github.com/rizfadh/dicostory"
+    },
+    {
+        "imgUrl": "/githubers.jpg",
+        "title": "Githubers",
+        "body": "Android application for checking others github profile like followers, following, and number of public repos",
+        "link": "https://github.com/rizfadh/githubers"
+    },
+    {
+        "imgUrl": "/eatme.png",
+        "title": "EatMe",
+        "body": "Web application using Progressive Web Apps (PWA) for exploring restaurants",
+        "link": "https://github.com/rizfadh/eatme"
+    },
+    {
+        "imgUrl": "/shootit.png",
+        "title": "Shoot it!",
+        "body": "Web application for playing shooting game using vanilla javascript",
+        "link": "https://github.com/rizfadh/shootit"
+    },
+    {
+        "imgUrl": "/chatankuy.png",
+        "title": "ChatanKuy!",
+        "body": "Web application for chatting anonymously with other peoples using React.js and Firebase",
+        "link": "https://github.com/rizfadh/chatankuy"
+    }
+]
