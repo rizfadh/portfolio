@@ -1,13 +1,7 @@
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa"
 import ContactList from "./ContactList";
+import { contacts } from "../assets/iconsData";
 
 export default function Header() {
-
-    const contacts = [
-        {Icon: FaGithub, link: "https://github.com/rizfadh"},
-        {Icon: FaLinkedin, link: "https://www.linkedin.com/in/rizfadh"},
-        {Icon: FaInstagram, link: "https://www.instagram.com/rzy_fdhlh"},
-    ]
 
     return (
         <header>
