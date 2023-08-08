@@ -1,7 +1,7 @@
 export default function CertificatesItem({ imgUrl, title, from, issueDate, link }) {
     return (
         <div className="col">
-            <div className="card h-100 position-relative border-0 shadow">
+            <div className="card h-100 position-relative border-0 shadow-sm">
                 <div className="row h-100">
                     <div className="d-none d-lg-block col-lg-3">
                         <img src={imgUrl} className="img-fluid object-fit-cover h-100 rounded-start" alt={title}/>

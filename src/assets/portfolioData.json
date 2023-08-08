@@ -42,14 +42,14 @@
             "imgUrl": "/bangkit.png",
             "title": "Mobile Development",
             "from": "Bangkit Academy",
-            "issueDate": "Mei 2023 - 2026",
+            "issueDate": "Jul 2023",
             "link": "https://drive.google.com/file/d/1BwititGfwL2NkL-GMq_tzu-nSrc9KHog/view"
         },
         {
             "imgUrl": "/dicoding.png",
             "title": "Belajar Pengembangan Aplikasi Android Intermediate",
             "from": "Dicoding Indonesia",
-            "issueDate": "Mei 2023 - 2026",
+            "issueDate": "May 2023 - 2026",
             "link": "https://www.dicoding.com/certificates/81P237JYYXOY"
         },
         {
@@ -77,7 +77,7 @@
             "imgUrl": "/dicoding.png",
             "title": "Fundamental Aplikasi Web dengan React",
             "from": "Dicoding Indonesia",
-            "issueDate": "Okt 2022 - 2025",
+            "issueDate": "Oct 2022 - 2025",
             "link": "https://www.dicoding.com/certificates/ERZRG44WWPYV"
         }
     ]
