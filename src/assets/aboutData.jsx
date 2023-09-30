@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaInstagram, FaAndroid } from "react-icons/fa"
-import { SiKotlin, SiJavascript, SiReact, SiFigma, SiAdobeillustrator, SiAdobephotoshop } from "react-icons/si"
+import { SiKotlin, SiJavascript, SiReact, SiFigma, SiAdobeillustrator, SiAdobephotoshop, SiFirebase } from "react-icons/si"
 
 const contacts = [
     {Icon: FaGithub, link: "https://github.com/rizfadh"},
@@ -25,6 +25,10 @@ const skills = [
         Icon: SiReact
     },
     {
+        title: "Firebase",
+        Icon: SiFirebase
+    },
+    {
         title: "Figma",
         Icon: SiFigma
     },
@@ -35,7 +39,7 @@ const skills = [
     {
         title: "Photoshop",
         Icon: SiAdobephotoshop
-    },
+    }
 ]
 
 export { contacts, skills }
