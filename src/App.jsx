@@ -2,12 +2,20 @@ import { useEffect, useState } from "react"
 import Body from "./components/Body"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import DarkModeButton from "./components/DarkModeButton"
+import NavBar from "./components/NavBar"
 
 function App() {
 
-  const [darkTheme, setDarkTheme] = useState("light")
-  const toggleDarkTheme = () => setDarkTheme( prev => prev === "light" ? "dark" : "light")
+  const DARK_THEME_KEY = 'darkTheme'
+  const [darkTheme, setDarkTheme] = useState(() => localStorage.getItem(DARK_THEME_KEY) || 'light')
+  
+  const toggleDarkTheme = () => {
+    setDarkTheme( prev => {
+        const theme = prev === "light" ? "dark" : "light"
+        localStorage.setItem(DARK_THEME_KEY, theme)
+        return theme
+    })
+  }
 
   useEffect(() => {
     document.body.setAttribute("data-bs-theme", darkTheme)
@@ -15,7 +23,7 @@ function App() {
 
   return (
     <>
-      <DarkModeButton darkModeValue={darkTheme} darkModeChange={toggleDarkTheme} />
+      <NavBar darkModeValue={darkTheme} darkModeChange={toggleDarkTheme} />
       <Header/>
       <Body />
       <Footer/>

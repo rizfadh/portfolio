@@ -10,11 +10,11 @@ export default function Body() {
     return (
         <article>
             <div className="container py-5">
-                <Title>Current <span className="text-primary">Skills</span></Title>
+                <Title>Current <span className="text-primary font-script fw-normal">Skills</span></Title>
                 <SkillsList skills={skills} />
-                <Title className="mt-5">Interesting <span className="text-primary">Project</span></Title>
+                <Title className="mt-5">Interesting <span className="text-primary font-script fw-normal">Project</span></Title>
                 <ProjectList projects={projects} />
-                <Title className="mt-5">Current <span className="text-primary">Certificates</span></Title>
+                <Title className="mt-5">Current <span className="text-primary font-script fw-normal">Certificates</span></Title>
                 <CertificatesList certificates={certificates} />
             </div>
         </article>
