@@ -6,7 +6,7 @@ export default function NavBar({ darkModeValue, darkModeChange }) {
             <div className="container">
                 <div className="w-100 d-flex align-items-center px-3 py-2 justify-content-between bg-body-tertiary rounded shadow-sm">
                     <div>
-                        <p className="navbar-brand fs-4 m-0 font-script text-primary">Rizky&apos;s Portfolio</p>
+                        <h1 className="navbar-brand fs-4 m-0 font-script text-primary">Rizky&apos;s Portfolio</h1>
                     </div>
                     <div>
                         <button
