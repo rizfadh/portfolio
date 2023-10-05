@@ -1,7 +1,14 @@
-@import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap';
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .font-script {
     font-family: 'Pacifico';
+}
+
+.text-truncate-custom {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
