@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import showFormattedDate from '../../utils/dateUtil'
 import { FaCalendar, FaUser } from 'react-icons/fa'
+import { format, parseISO } from 'date-fns'
 
 export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
     return (
@@ -10,15 +10,13 @@ export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
                     <p className='card-title fs-5 text-truncate'>{title}</p>
                     <p className='d-flex align-items-center card-text mb-2 text-body-secondary'>
                         <FaCalendar className='me-2' />
-                        <small className='text-body-secondary'>
-                            {showFormattedDate(createdAt)}
+                        <small className='text-truncate'>
+                            {format(parseISO(createdAt), 'PPPPp')}
                         </small>
                     </p>
                     <p className='d-flex align-items-center card-text text-body-secondary'>
                         <FaUser className='me-2' />
-                        <small className='text-body-secondary'>
-                            By {createdBy}
-                        </small>
+                        <small className='text-truncate'>By {createdBy}</small>
                     </p>
                     <p className='card-text text-truncate-custom'>{desc}</p>
                 </div>
