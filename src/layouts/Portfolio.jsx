@@ -8,8 +8,8 @@ import CertificatesList from '../components/CertificatesList'
 
 function Portfolio() {
     return (
-        <>
-            <header>
+        <article>
+            <section>
                 <div className='container py-4'>
                     <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
                         <div className='col text-center text-lg-end order-lg-1'>
@@ -44,8 +44,8 @@ function Portfolio() {
                         </div>
                     </div>
                 </div>
-            </header>
-            <article>
+            </section>
+            <section>
                 <div className='container py-5'>
                     <Title className='text-center text-lg-start'>
                         Current{' '}
@@ -69,8 +69,8 @@ function Portfolio() {
                     </Title>
                     <CertificatesList certificates={certificates} />
                 </div>
-            </article>
-        </>
+            </section>
+        </article>
     )
 }
 

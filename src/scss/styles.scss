@@ -12,3 +12,17 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+// Hide Scrollbar
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+html {
+    scrollbar-width: none;
+}
