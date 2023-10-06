@@ -13,7 +13,10 @@ function Portfolio() {
                 <div className='container py-4'>
                     <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
                         <div className='col text-center text-lg-end order-lg-1'>
-                            <img src='/avatar.svg' className='img-fluid p-5' />
+                            <img
+                                src='/img/avatar.svg'
+                                className='img-fluid p-5'
+                            />
                         </div>
                         <div className='col order-lg-0'>
                             <h2 className='display-2 fw-bolder text-center text-lg-start'>
