@@ -26,10 +26,11 @@ function Root() {
     state === 'loading'
         ? Swal.fire({
               title: 'Loading',
-              text: 'Please wait',
+              text: 'Please wait a moment',
               icon: 'info',
               allowOutsideClick: false,
               showConfirmButton: false,
+              scrollbarPadding: false,
           })
         : Swal.close()
 

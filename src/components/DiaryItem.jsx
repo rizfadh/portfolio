@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaCalendar, FaUser } from 'react-icons/fa'
 import { format, parseISO } from 'date-fns'
+import { id as idn } from 'date-fns/locale'
 
 export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
     return (
@@ -11,7 +12,9 @@ export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
                     <p className='d-flex align-items-center card-text mb-2 text-body-secondary'>
                         <FaCalendar className='me-2' />
                         <small className='text-truncate'>
-                            {format(parseISO(createdAt), 'PPPPp')}
+                            {format(parseISO(createdAt), 'PPPPp', {
+                                locale: idn,
+                            })}
                         </small>
                     </p>
                     <p className='d-flex align-items-center card-text text-body-secondary'>
