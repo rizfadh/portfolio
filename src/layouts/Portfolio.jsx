@@ -9,13 +9,14 @@ import CertificatesList from '../components/CertificatesList'
 function Portfolio() {
     return (
         <article>
-            <section>
-                <div className='container py-4'>
+            <section className='mb-5'>
+                <div className='container'>
                     <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
                         <div className='col text-center text-lg-end order-lg-1'>
                             <img
                                 src='/img/avatar.svg'
                                 className='img-fluid p-5'
+                                alt='avatar'
                             />
                         </div>
                         <div className='col order-lg-0'>
@@ -46,7 +47,7 @@ function Portfolio() {
                 </div>
             </section>
             <section>
-                <div className='container py-5'>
+                <div className='container'>
                     <Title className='text-center text-lg-start'>
                         Current{' '}
                         <span className='text-primary font-script fw-normal'>
