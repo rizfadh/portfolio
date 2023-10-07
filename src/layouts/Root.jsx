@@ -36,16 +36,17 @@ function Root() {
 
     return (
         <>
-            <NavBar
-                darkModeValue={darkTheme}
-                darkModeChange={toggleDarkTheme}
-            />
+            <div className='d-flex flex-column justify-content-between min-vh-100'>
+                <NavBar
+                    darkModeValue={darkTheme}
+                    darkModeChange={toggleDarkTheme}
+                />
+                <main>
+                    <Outlet />
+                </main>
 
-            <main>
-                <Outlet />
-            </main>
-
-            <Footer />
+                <Footer />
+            </div>
         </>
     )
 }

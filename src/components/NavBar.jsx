@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function NavBar({ darkModeValue, darkModeChange }) {
     return (
-        <header className='sticky-top py-3'>
+        <header className='sticky-top pt-2 pb-4'>
             <nav className='navbar navbar-expand-lg'>
                 <div className='container'>
                     <div className='d-flex flex-wrap justify-content-between w-100 px-3 py-2 bg-body-tertiary rounded shadow-sm'>

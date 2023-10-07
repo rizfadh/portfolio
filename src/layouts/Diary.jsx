@@ -4,7 +4,7 @@ function Diary() {
     return (
         <article>
             <section>
-                <div className='container py-5'>
+                <div className='container'>
                     <Outlet />
                 </div>
             </section>
