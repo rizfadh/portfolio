@@ -1,10 +1,15 @@
-import { useLoaderData } from 'react-router-dom'
 import Title from './Title'
 import { FaCalendar, FaUser } from 'react-icons/fa'
 import { format, parseISO } from 'date-fns'
+import { id as idn } from 'date-fns/locale'
+import { useQuery } from 'react-query'
+import { getDiaryQuery } from '../../utils/api'
+import { useParams } from 'react-router-dom'
 
 function DiaryDetail() {
-    const { title, createdAt, createdBy, desc } = useLoaderData()
+    const { id } = useParams()
+    const { data } = useQuery(getDiaryQuery(id))
+    const { title, createdAt, createdBy, desc } = data
 
     return (
         <>
@@ -12,7 +17,7 @@ function DiaryDetail() {
             <p className='mb-2 d-flex align-items-center text-body-secondary'>
                 <FaCalendar className='me-2' />
                 <small className='text-truncate'>
-                    {format(parseISO(createdAt), 'PPPPp')}
+                    {format(parseISO(createdAt), 'PPPPp', { locale: idn })}
                 </small>
             </p>
             <p className='d-flex align-items-center text-body-secondary'>
