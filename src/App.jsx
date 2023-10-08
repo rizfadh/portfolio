@@ -9,10 +9,18 @@ import Diary from './layouts/Diary'
 import DiaryDetail from './components/DiaryDetail'
 import Root from './layouts/Root'
 import DiaryList from './components/DiaryList'
-import { diariesLoader, diaryLoader } from '../utils/api'
+import {
+    addDiaryAction,
+    diariesLoader,
+    diaryLoader,
+    loginAction,
+} from '../utils/api'
 import NotFound from './layouts/NotFound'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Login from './layouts/Login'
+import Dashboard from './layouts/Dashboard'
+import Protected from './layouts/Protected'
+import AddDiary from './layouts/AddDiary'
 
 const queryClient = new QueryClient()
 
@@ -32,15 +40,19 @@ const router = createBrowserRouter(
                     loader={diaryLoader(queryClient)}
                 />
             </Route>
-            <Route
-                path='login'
-                element={<Login />}
-                action={async ({ params, request }) => {
-                    const data = await request.formData()
-                    console.log(data.get('email'), data.get('password'))
-                    return null
-                }}
-            />
+            <Route path='login' element={<Login />} action={loginAction} />
+            <Route element={<Protected />}>
+                <Route
+                    path='dashboard'
+                    element={<Dashboard />}
+                    loader={diariesLoader(queryClient)}
+                />
+                <Route
+                    path='add'
+                    element={<AddDiary />}
+                    action={addDiaryAction(queryClient)}
+                />
+            </Route>
             <Route path='*' element={<NotFound />} />
         </Route>
     )

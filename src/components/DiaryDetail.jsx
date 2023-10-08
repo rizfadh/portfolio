@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 function DiaryDetail() {
     const { id } = useParams()
     const { data } = useQuery(getDiaryQuery(id))
-    const { title, createdAt, createdBy, desc } = data
+    const { title, createdAt, createdBy, desc } = data.data
 
     return (
         <>
@@ -24,7 +24,7 @@ function DiaryDetail() {
                 <FaUser className='me-2' />
                 <small className='text-truncate'>By {createdBy}</small>
             </p>
-            <p>{desc}</p>
+            <p className='mb-0'>{desc}</p>
         </>
     )
 }

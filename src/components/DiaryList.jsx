@@ -1,11 +1,11 @@
-import { useLoaderData } from 'react-router-dom'
 import DiaryItem from './DiaryItem'
 import Title from './Title'
 import { useQuery } from 'react-query'
 import { getDiariesQuery } from '../../utils/api'
 
 export default function DiaryList() {
-    const { data: diaries } = useQuery(getDiariesQuery())
+    const { data } = useQuery(getDiariesQuery())
+    const { data: diaries } = data
 
     return (
         <>
@@ -27,7 +27,7 @@ export default function DiaryList() {
                         title={diary.title}
                         desc={diary.desc}
                         createdBy={diary.createdBy}
-                        createdAt={diary.createdAt}
+                        updatedAt={diary.updatedAt}
                     />
                 ))}
             </div>

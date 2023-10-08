@@ -1,8 +1,33 @@
-import { Form } from 'react-router-dom'
+import {
+    Form,
+    useActionData,
+    useNavigate,
+    useOutletContext,
+} from 'react-router-dom'
 import Title from '../components/Title'
 import { MdMail, MdPassword } from 'react-icons/md'
+import Swal from 'sweetalert2'
+import { setAccessToken } from '../../utils/local'
+import CONSTANTS from '../global/constants'
+import { useEffect } from 'react'
 
 function Login() {
+    const data = useActionData()
+    const { accessToken, setAccessToken: setToken } = useOutletContext()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (accessToken) navigate('/dashboard', { replace: true })
+        if (data?.error) Swal.fire(data.title, data.message, 'error')
+        if (data?.data) {
+            const token = data.data.accessToken
+            setAccessToken(CONSTANTS.ACCESS_TOKEN_KEY, token)
+            setToken(token)
+            navigate('/dashboard', { replace: true })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data])
+
     return (
         <article>
             <section>
@@ -33,6 +58,7 @@ function Login() {
                                         name='email'
                                         aria-label='Email'
                                         aria-describedby='email-addon'
+                                        placeholder='Email'
                                     />
                                 </div>
                                 <div className='input-group mb-3'>
@@ -49,6 +75,7 @@ function Login() {
                                         name='password'
                                         aria-label='Password'
                                         aria-describedby='password-addon'
+                                        placeholder='Password'
                                     />
                                 </div>
                                 <button
