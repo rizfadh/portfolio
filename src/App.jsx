@@ -21,6 +21,7 @@ import Login from './layouts/Login'
 import Dashboard from './layouts/Dashboard'
 import Protected from './layouts/Protected'
 import AddDiary from './layouts/AddDiary'
+import { HelmetProvider } from 'react-helmet-async'
 
 const queryClient = new QueryClient()
 
@@ -60,9 +61,11 @@ const router = createBrowserRouter(
 
 function App() {
     return (
-        <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router} />
-        </QueryClientProvider>
+        <HelmetProvider>
+            <QueryClientProvider client={queryClient}>
+                <RouterProvider router={router} />
+            </QueryClientProvider>
+        </HelmetProvider>
     )
 }
 

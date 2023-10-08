@@ -5,6 +5,7 @@ import { id as idn } from 'date-fns/locale'
 import { useQuery } from 'react-query'
 import { getDiaryQuery } from '../../utils/api'
 import { useParams } from 'react-router-dom'
+import Head from './Head'
 
 function DiaryDetail() {
     const { id } = useParams()
@@ -13,6 +14,10 @@ function DiaryDetail() {
 
     return (
         <>
+            <Head
+                title={title}
+                desc={`${desc.split(' ').slice(0, 10).join(' ')}...`}
+            />
             <Title className='mb-3'>{title}</Title>
             <p className='mb-2 d-flex align-items-center text-body-secondary'>
                 <FaCalendar className='me-2' />

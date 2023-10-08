@@ -2,6 +2,7 @@ import DiaryItem from './DiaryItem'
 import Title from './Title'
 import { useQuery } from 'react-query'
 import { getDiariesQuery } from '../../utils/api'
+import Head from './Head'
 
 export default function DiaryList() {
     const { data } = useQuery(getDiariesQuery())
@@ -9,6 +10,10 @@ export default function DiaryList() {
 
     return (
         <>
+            <Head
+                title={`Rizky's Diary`}
+                desc='Step into my world of thoughts, emotions, and memories through the pages of my personal diary.'
+            />
             <Title className='text-center text-lg-start'>
                 Rizky&apos;s{' '}
                 <span className='text-primary font-script fw-normal'>

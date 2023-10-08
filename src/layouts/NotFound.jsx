@@ -1,22 +1,29 @@
+import Head from '../components/Head'
 import Title from '../components/Title'
 
 function NotFound() {
     return (
-        <article>
-            <section>
-                <div className='container py-5'>
-                    <Title className='text-center'>
-                        Page{' '}
-                        <span className='text-primary font-script fw-normal'>
-                            Not Found
-                        </span>
-                    </Title>
-                    <p className='text-center'>
-                        Sorry, the page you are requesting is not available
-                    </p>
-                </div>
-            </section>
-        </article>
+        <>
+            <Head
+                title='Page Not Found'
+                desc='Sorry, the page you are requesting is not available'
+            />
+            <article>
+                <section>
+                    <div className='container py-5'>
+                        <Title className='text-center'>
+                            Page{' '}
+                            <span className='text-primary font-script fw-normal'>
+                                Not Found
+                            </span>
+                        </Title>
+                        <p className='text-center'>
+                            Sorry, the page you are requesting is not available
+                        </p>
+                    </div>
+                </section>
+            </article>
+        </>
     )
 }
 
