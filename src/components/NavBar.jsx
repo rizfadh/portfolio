@@ -1,7 +1,7 @@
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
-export default function NavBar({ darkModeValue, darkModeChange }) {
+export default function NavBar({ accessToken, darkModeValue, darkModeChange }) {
     return (
         <header className='sticky-top pt-2 pb-4'>
             <nav className='navbar navbar-expand-lg'>
@@ -27,19 +27,33 @@ export default function NavBar({ darkModeValue, darkModeChange }) {
                         >
                             <ul className='navbar-nav ms-lg-5 me-auto mb-2 mb-lg-0 align-items-center'>
                                 <li className='nav-item'>
-                                    <NavLink to='/' className='nav-link'>
-                                        Portfolio
-                                    </NavLink>
-                                </li>
-                                <li className='nav-item'>
                                     <NavLink
-                                        to='/diary'
+                                        to='/'
                                         className='nav-link'
                                         replace
                                     >
-                                        Diary
+                                        Portfolio
                                     </NavLink>
                                 </li>
+                                {accessToken ? (
+                                    <li className='nav-item'>
+                                        <NavLink
+                                            to='/dashboard'
+                                            className='nav-link'
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                ) : (
+                                    <li className='nav-item'>
+                                        <NavLink
+                                            to='/diary'
+                                            className='nav-link'
+                                        >
+                                            Diary
+                                        </NavLink>
+                                    </li>
+                                )}
                             </ul>
                             <button
                                 type='button'

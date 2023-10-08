@@ -3,7 +3,7 @@ import { FaCalendar, FaUser } from 'react-icons/fa'
 import { format, parseISO } from 'date-fns'
 import { id as idn } from 'date-fns/locale'
 
-export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
+export default function DiaryItem({ id, title, desc, createdBy, updatedAt }) {
     return (
         <div className='col'>
             <div className='card bg-body-tertiary position-relative h-100 border-0 shadow-sm'>
@@ -12,7 +12,7 @@ export default function DiaryItem({ id, title, desc, createdBy, createdAt }) {
                     <p className='d-flex align-items-center card-text mb-2 text-body-secondary'>
                         <FaCalendar className='me-2' />
                         <small className='text-truncate'>
-                            {format(parseISO(createdAt), 'PPPPp', {
+                            {format(parseISO(updatedAt), 'PPPPp', {
                                 locale: idn,
                             })}
                         </small>

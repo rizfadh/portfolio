@@ -3,9 +3,11 @@ import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
+import CONSTANTS from '../global/constants'
+import { getAccessToken } from '../../utils/local'
 
 function Root() {
-    const DARK_THEME_KEY = 'darkTheme'
+    const DARK_THEME_KEY = CONSTANTS.DARK_THEME_KEY
     const [darkTheme, setDarkTheme] = useState(
         () => localStorage.getItem(DARK_THEME_KEY) || 'light'
     )
@@ -34,18 +36,22 @@ function Root() {
           })
         : Swal.close()
 
+    const [accessToken, setAccessToken] = useState(
+        () => getAccessToken(CONSTANTS.ACCESS_TOKEN_KEY) || ''
+    )
     return (
         <>
             <div className='d-flex flex-column justify-content-between min-vh-100'>
                 <NavBar
+                    accessToken={accessToken}
                     darkModeValue={darkTheme}
                     darkModeChange={toggleDarkTheme}
                 />
                 <main>
-                    <Outlet />
+                    <Outlet context={{ accessToken, setAccessToken }} />
                 </main>
 
-                <Footer />
+                <Footer accessToken={accessToken} />
             </div>
         </>
     )
