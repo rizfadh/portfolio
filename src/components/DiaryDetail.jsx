@@ -24,7 +24,10 @@ function DiaryDetail() {
                 <FaUser className='me-2' />
                 <small className='text-truncate'>By {createdBy}</small>
             </p>
-            <p className='mb-0'>{desc}</p>
+            <hr />
+            <p className='mb-0' style={{ whiteSpace: 'pre-line' }}>
+                {desc}
+            </p>
         </>
     )
 }
