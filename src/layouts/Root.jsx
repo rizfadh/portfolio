@@ -34,7 +34,6 @@ function Root() {
               icon: 'info',
               allowOutsideClick: false,
               showConfirmButton: false,
-              scrollbarPadding: false,
           })
         : Swal.close()
 
