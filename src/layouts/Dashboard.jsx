@@ -3,7 +3,7 @@ import { getDiariesQuery } from '../../utils/api'
 import DiaryItem from '../components/DiaryItem'
 import Title from '../components/Title'
 import { FaPlusCircle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 
 function Dashboard() {
     const { data } = useQuery(getDiariesQuery())

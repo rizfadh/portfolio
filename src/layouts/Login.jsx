@@ -6,11 +6,11 @@ import {
 } from 'react-router-dom'
 import Title from '../components/Title'
 import { MdMail, MdPassword } from 'react-icons/md'
-import Swal from 'sweetalert2'
 import { setAccessToken } from '../../utils/local'
 import CONSTANTS from '../global/constants'
 import { useEffect } from 'react'
 import Head from '../components/Head'
+import { SwalAlert } from '../../utils/alert'
 
 function Login() {
     const data = useActionData()
@@ -19,7 +19,8 @@ function Login() {
 
     useEffect(() => {
         if (accessToken) navigate('/dashboard', { replace: true })
-        if (data?.error) Swal.fire(data.title, data.message, 'error')
+        if (data?.error)
+            SwalAlert({ title: data.title, text: data.message, icon: 'error' })
         if (data?.data) {
             const token = data.data.accessToken
             setAccessToken(CONSTANTS.ACCESS_TOKEN_KEY, token)
@@ -36,7 +37,7 @@ function Login() {
                 <section>
                     <div className='container py-5'>
                         <div className='row row-cols-1 row-cols-lg-2 px-lg-5'>
-                            <div className='col d-flex flex-column justify-content-center align-items-start align-items-lg-center mb-3 mb-lg-0'>
+                            <div className='col d-flex flex-column justify-content-center align-items-center mb-3 mb-lg-0'>
                                 <Title>
                                     Rizky&apos;s{' '}
                                     <span className='font-script text-primary'>
@@ -62,6 +63,7 @@ function Login() {
                                             aria-label='Email'
                                             aria-describedby='email-addon'
                                             placeholder='Email'
+                                            required
                                         />
                                     </div>
                                     <div className='input-group mb-3'>
@@ -79,6 +81,7 @@ function Login() {
                                             aria-label='Password'
                                             aria-describedby='password-addon'
                                             placeholder='Password'
+                                            required
                                         />
                                     </div>
                                     <button
