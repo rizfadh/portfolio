@@ -53,7 +53,10 @@ function Root() {
                     <Outlet context={{ accessToken, setAccessToken }} />
                 </main>
 
-                <Footer accessToken={accessToken} />
+                <Footer
+                    accessToken={accessToken}
+                    setAccessToken={setAccessToken}
+                />
             </div>
         </>
     )
