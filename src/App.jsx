@@ -13,6 +13,7 @@ import {
     addDiaryAction,
     diariesLoader,
     diaryLoader,
+    editDiaryAction,
     loginAction,
 } from '../utils/api'
 import NotFound from './layouts/NotFound'
@@ -22,6 +23,7 @@ import Dashboard from './layouts/Dashboard'
 import Protected from './layouts/Protected'
 import AddDiary from './layouts/AddDiary'
 import { HelmetProvider } from 'react-helmet-async'
+import EditDiary from './layouts/EditDiary'
 
 const queryClient = new QueryClient()
 
@@ -52,6 +54,12 @@ const router = createBrowserRouter(
                     path='add'
                     element={<AddDiary />}
                     action={addDiaryAction(queryClient)}
+                />
+                <Route
+                    path='edit/:id'
+                    element={<EditDiary />}
+                    loader={diaryLoader(queryClient)}
+                    action={editDiaryAction(queryClient)}
                 />
             </Route>
             <Route path='*' element={<NotFound />} />

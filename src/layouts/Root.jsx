@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import CONSTANTS from '../global/constants'
 import { getAccessToken } from '../../utils/local'
+import { SwalAlert } from '../../utils/alert'
+import { info } from 'sass'
 
 function Root() {
     const DARK_THEME_KEY = CONSTANTS.DARK_THEME_KEY
@@ -26,7 +28,7 @@ function Root() {
 
     const { state } = useNavigation()
     state === 'loading'
-        ? Swal.fire({
+        ? SwalAlert({
               title: 'Loading',
               text: 'Please wait a moment',
               icon: 'info',
