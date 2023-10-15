@@ -71,7 +71,7 @@ function DiaryDetail() {
             <img
                 src={imageURL}
                 className='img-fluid w-100 rounded object-fit-cover mb-3'
-                style={{ maxHeight: '20rem' }}
+                style={{ maxHeight: '30rem' }}
                 alt={title}
             />
             <Title className='mb-3'>{title}</Title>
