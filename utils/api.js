@@ -1,6 +1,13 @@
 import Swal from 'sweetalert2'
 import CONSTANTS from '../src/global/constants'
 import { getAccessToken, setAccessToken } from './local'
+import { imagesRef } from './firebaseConfig'
+import {
+    deleteObject,
+    getDownloadURL,
+    ref,
+    uploadBytesResumable,
+} from 'firebase/storage'
 
 const endpoint = import.meta.env.VITE_API_ENDPOINT
 
@@ -78,8 +85,10 @@ const loginAction = async ({ params, request }) => {
     }
 }
 
-const addDiary = async (title, desc, accessToken) => {
+const addDiary = async ({ imageName, imageURL, title, desc, accessToken }) => {
     const data = {
+        imageName,
+        imageURL,
         title: title.trim(),
         desc: desc.trim(),
     }
@@ -95,15 +104,33 @@ const addDiary = async (title, desc, accessToken) => {
     return response
 }
 
+const uploadImage = async (image) => {
+    const imageName = `${+new Date()}`
+    const imageRef = ref(imagesRef, imageName)
+    await uploadBytesResumable(imageRef, image)
+    const downloadURL = await getDownloadURL(imageRef)
+    return { imageName, downloadURL }
+}
+
 const addDiaryAction =
     (queryClient) =>
     async ({ params, request }) => {
         try {
             const accessToken = getAccessToken(CONSTANTS.ACCESS_TOKEN_KEY)
             const input = await request.formData()
+            const image = input.get('image')
             const title = input.get('title')
             const desc = input.get('desc')
-            const response = await addDiary(title, desc, accessToken)
+            const { imageName, downloadURL: imageURL } = await uploadImage(
+                image
+            )
+            const response = await addDiary({
+                imageName,
+                imageURL,
+                title,
+                desc,
+                accessToken,
+            })
             const result = await response.json()
             if (result.error) return result
             queryClient.invalidateQueries({ queryKey: ['diaries'] })
@@ -161,9 +188,20 @@ const deleteDiary = async (id, accessToken) => {
     return await response.json()
 }
 
-const deleteDiaryAction = async ({ id, accessToken, queryClient }) => {
+const deleteImage = async (imageName) => {
+    const imageRef = ref(imagesRef, imageName)
+    await deleteObject(imageRef)
+}
+
+const deleteDiaryAction = async ({
+    id,
+    imageName,
+    accessToken,
+    queryClient,
+}) => {
     try {
         const response = await deleteDiary(id, accessToken)
+        await deleteImage(imageName)
         if (response.error) return response
         queryClient.invalidateQueries({ queryKey: ['diaries'] })
         return response
