@@ -29,6 +29,7 @@ export default function DiaryList() {
                     <DiaryItem
                         key={diary._id}
                         id={diary._id}
+                        imageURL={diary.imageURL}
                         title={diary.title}
                         desc={diary.desc}
                         createdBy={diary.createdBy}

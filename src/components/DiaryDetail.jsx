@@ -16,12 +16,17 @@ import { SwalAlert } from '../../utils/alert'
 function DiaryDetail() {
     const { id } = useParams()
     const { data } = useQuery(getDiaryQuery(id))
-    const { title, createdAt, createdBy, desc } = data.data
+    const { imageName, imageURL, title, createdAt, createdBy, desc } = data.data
     const context = useOutletContext()
     const navigate = useNavigate()
     const queryClient = useQueryClient()
 
-    const deleteDiaryHandler = ({ id, accessToken, queryClient }) => {
+    const deleteDiaryHandler = ({
+        id,
+        imageName,
+        accessToken,
+        queryClient,
+    }) => {
         SwalAlert({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -32,6 +37,7 @@ function DiaryDetail() {
             if (result.isConfirmed) {
                 const response = await deleteDiaryAction({
                     id,
+                    imageName,
                     accessToken,
                     queryClient,
                 })
@@ -62,6 +68,12 @@ function DiaryDetail() {
                     .slice(0, 20)
                     .join(' ')}...`}
             />
+            <img
+                src={imageURL}
+                className='img-fluid w-100 rounded object-fit-cover mb-3'
+                style={{ maxHeight: '20rem' }}
+                alt={title}
+            />
             <Title className='mb-3'>{title}</Title>
             <p className='mb-2 d-flex align-items-center text-body-secondary'>
                 <FaCalendar className='me-2' />
@@ -85,7 +97,12 @@ function DiaryDetail() {
                         className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
                         onClick={() => {
                             const accessToken = context?.accessToken
-                            deleteDiaryHandler({ id, accessToken, queryClient })
+                            deleteDiaryHandler({
+                                id,
+                                imageName,
+                                accessToken,
+                                queryClient,
+                            })
                         }}
                     >
                         Delete <FaTrash />
