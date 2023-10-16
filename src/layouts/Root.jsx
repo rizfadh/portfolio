@@ -1,12 +1,10 @@
-import { Outlet, useNavigation } from 'react-router-dom'
+import { Outlet, ScrollRestoration, useNavigation } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
-import Swal from 'sweetalert2'
 import CONSTANTS from '../global/constants'
 import { getAccessToken } from '../../utils/local'
-import { SwalAlert } from '../../utils/alert'
-import { info } from 'sass'
+import { BarLoader } from 'react-spinners'
 
 function Root() {
     const DARK_THEME_KEY = CONSTANTS.DARK_THEME_KEY
@@ -27,15 +25,6 @@ function Root() {
     }, [darkTheme])
 
     const { state } = useNavigation()
-    state === 'loading'
-        ? SwalAlert({
-              title: 'Loading',
-              text: 'Please wait a moment',
-              icon: 'info',
-              allowOutsideClick: false,
-              showConfirmButton: false,
-          })
-        : Swal.close()
 
     const [accessToken, setAccessToken] = useState(
         () => getAccessToken(CONSTANTS.ACCESS_TOKEN_KEY) || ''
@@ -43,6 +32,12 @@ function Root() {
     return (
         <>
             <div className='d-flex flex-column justify-content-between min-vh-100'>
+                <BarLoader
+                    className='position-fixed w-100 z-3'
+                    color='#0d6efd'
+                    loading={state === 'loading' ? true : false}
+                />
+
                 <NavBar
                     accessToken={accessToken}
                     darkModeValue={darkTheme}
@@ -56,6 +51,7 @@ function Root() {
                     accessToken={accessToken}
                     setAccessToken={setAccessToken}
                 />
+                <ScrollRestoration getKey={(location) => location.pathname} />
             </div>
         </>
     )

@@ -13,7 +13,7 @@ function Portfolio() {
             <Head
                 title={`Rizky's Portfolio`}
                 desc='Visit this website if you wanna know more about me'
-                imageURL='https://rizfadh.netlify.app/icon/300x300.png'
+                imageURL='https://firebasestorage.googleapis.com/v0/b/portfolio-storage-aa107.appspot.com/o/images%2Frizky-icon.png?alt=media&token=d0309ac7-3ada-4e62-a43a-87246a5c6c87'
             />
             <article>
                 <section className='mb-5'>

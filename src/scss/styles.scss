@@ -13,6 +13,29 @@
     overflow: hidden;
 }
 
+.image-skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: $gray-200;
+    }
+    100% {
+        background-color: $gray-400;
+    }
+}
+
+.image-height {
+    height: 10rem;
+}
+
+@include media-breakpoint-up(md) {
+    .image-height {
+        height: 30rem;
+    }
+}
+
 // Hide Scrollbar
 
 body::-webkit-scrollbar {
