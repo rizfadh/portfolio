@@ -32,7 +32,11 @@ function Login() {
 
     return (
         <>
-            <Head title={`Rizky's Login`} desc='Login if you are Rizky' />
+            <Head
+                title={`Rizky's Login`}
+                desc='Login if you are Rizky'
+                imageURL='https://rizfadh.netlify.app/icon/300x300.png'
+            />
             <article>
                 <section>
                     <div className='container py-5'>

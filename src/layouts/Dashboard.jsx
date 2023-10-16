@@ -31,7 +31,6 @@ function Dashboard() {
                                 id={diary._id}
                                 imageURL={diary.imageURL}
                                 title={diary.title}
-                                desc={diary.desc}
                                 createdBy={diary.createdBy}
                                 updatedAt={diary.updatedAt}
                             />
