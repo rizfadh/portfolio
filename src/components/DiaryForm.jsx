@@ -1,11 +1,13 @@
 import { Form } from 'react-router-dom'
 
-function DiaryForm({ method, action, title, desc }) {
+function DiaryForm({ method, action, imageName, imageURL, title, desc }) {
     return (
         <Form method={method} action={action} encType='multipart/form-data'>
+            <input type='hidden' name='imageName' value={imageName} />
+            <input type='hidden' name='imageURL' value={imageURL} />
             <div className='mb-3'>
                 <label htmlFor='image' className='form-label'>
-                    Choose image
+                    Image
                 </label>
                 <input
                     className='form-control'
@@ -13,6 +15,7 @@ function DiaryForm({ method, action, title, desc }) {
                     id='image'
                     name='image'
                     accept='.png, .jpg, .jpeg, .webp'
+                    required={method === 'post' ? true : false}
                 />
             </div>
             <div className='mb-3'>

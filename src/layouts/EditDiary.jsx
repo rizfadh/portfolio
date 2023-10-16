@@ -9,7 +9,7 @@ import { SwalAlert } from '../../utils/alert'
 function EditDiary() {
     const { id } = useParams()
     const { data: diary } = useQuery(getDiaryQuery(id))
-    const { title, desc } = diary.data
+    const { imageName, imageURL, title, desc } = diary.data
     const data = useActionData()
     const navigate = useNavigate()
 
@@ -43,6 +43,8 @@ function EditDiary() {
                     <DiaryForm
                         method='put'
                         action={`/edit/${id}`}
+                        imageName={imageName}
+                        imageURL={imageURL}
                         title={title}
                         desc={desc}
                     />

@@ -105,6 +105,7 @@ const addDiary = async ({ imageName, imageURL, title, desc, accessToken }) => {
 }
 
 const uploadImage = async (image) => {
+    if (image.size > 300000) throw new Error('Image must less than 300kb!')
     const imageName = `${+new Date()}`
     const imageRef = ref(imagesRef, imageName)
     await uploadBytesResumable(imageRef, image)
@@ -140,8 +141,17 @@ const addDiaryAction =
         }
     }
 
-const editDiary = async ({ id, title, desc, accessToken }) => {
+const editDiary = async ({
+    id,
+    imageName,
+    imageURL,
+    title,
+    desc,
+    accessToken,
+}) => {
     const data = {
+        imageName,
+        imageURL,
         title: title.trim(),
         desc: desc.trim(),
     }
@@ -164,9 +174,30 @@ const editDiaryAction =
             const accessToken = getAccessToken(CONSTANTS.ACCESS_TOKEN_KEY)
             const input = await request.formData()
             const { id } = params
+            const image = input.get('image')
             const title = input.get('title')
             const desc = input.get('desc')
-            const response = await editDiary({ id, title, desc, accessToken })
+
+            let imageName = input.get('imageName')
+            let imageURL = input.get('imageURL')
+
+            if (image.size !== 0) {
+                const { imageName: refName, downloadURL } = await uploadImage(
+                    image
+                )
+                await deleteImage(imageName)
+                imageName = refName
+                imageURL = downloadURL
+            }
+
+            const response = await editDiary({
+                id,
+                imageName,
+                imageURL,
+                title,
+                desc,
+                accessToken,
+            })
             const result = await response.json()
             if (result.error) return result
             queryClient.invalidateQueries({ queryKey: ['diaries'] })
