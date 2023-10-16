@@ -19,10 +19,11 @@ function Portfolio() {
                 <section className='mb-5'>
                     <div className='container'>
                         <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
-                            <div className='col text-center text-lg-end order-lg-1'>
+                            <div className='col text-center text-lg-end order-lg-1 p-4'>
                                 <img
                                     src='/img/avatar.svg'
-                                    className='img-fluid p-5'
+                                    className='img-fluid image-skeleton rounded-pill'
+                                    style={{ maxHeight: '30rem' }}
                                     alt='avatar'
                                 />
                             </div>
