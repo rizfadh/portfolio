@@ -67,6 +67,7 @@ function DiaryDetail() {
                     .split(' ')
                     .slice(0, 20)
                     .join(' ')}...`}
+                imageURL={imageURL}
             />
             <img
                 src={imageURL}

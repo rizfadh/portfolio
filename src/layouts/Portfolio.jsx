@@ -13,6 +13,7 @@ function Portfolio() {
             <Head
                 title={`Rizky's Portfolio`}
                 desc='Visit this website if you wanna know more about me'
+                imageURL='https://rizfadh.netlify.app/icon/300x300.png'
             />
             <article>
                 <section className='mb-5'>

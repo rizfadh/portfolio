@@ -34,13 +34,6 @@ export default function DiaryItem({
                         <FaUser className='me-2' />
                         <small className='text-truncate'>By {createdBy}</small>
                     </p>
-                    <hr />
-                    <p
-                        className='card-text text-truncate-custom'
-                        style={{ whiteSpace: 'pre-line' }}
-                    >
-                        {desc}
-                    </p>
                 </div>
                 <Link to={`/diary/${id}`} className='stretched-link'></Link>
             </div>

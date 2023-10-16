@@ -13,6 +13,7 @@ export default function DiaryList() {
             <Head
                 title={`Rizky's Diary`}
                 desc='Step into my world of thoughts, emotions, and memories through the pages of my personal diary.'
+                imageURL='https://rizfadh.netlify.app/icon/300x300.png'
             />
             <Title className='text-center text-lg-start'>
                 Rizky&apos;s{' '}
@@ -31,7 +32,6 @@ export default function DiaryList() {
                         id={diary._id}
                         imageURL={diary.imageURL}
                         title={diary.title}
-                        desc={diary.desc}
                         createdBy={diary.createdBy}
                         updatedAt={diary.updatedAt}
                     />
