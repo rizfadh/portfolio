@@ -28,12 +28,12 @@ function Portfolio() {
                                 />
                             </div>
                             <div className='col order-lg-0'>
-                                <h2 className='display-2 fw-bolder text-center text-lg-start'>
+                                <h1 className='display-2 fw-bolder text-center text-lg-start'>
                                     Hello I&apos;m{' '}
                                     <span className='text-primary font-script fw-normal'>
                                         Rizky
                                     </span>
-                                </h2>
+                                </h1>
                                 <p className='lead text-center text-lg-start'>
                                     Android and Front-End Web Developer
                                 </p>
@@ -57,21 +57,27 @@ function Portfolio() {
                 </section>
                 <section>
                     <div className='container'>
-                        <Title className='text-center text-lg-start'>
+                        <Title type='h2' className='text-center text-lg-start'>
                             Current{' '}
                             <span className='text-primary font-script fw-normal'>
                                 Skills
                             </span>
                         </Title>
                         <SkillsList skills={skills} />
-                        <Title className='mt-5 text-center text-lg-start'>
+                        <Title
+                            type='h2'
+                            className='mt-5 text-center text-lg-start'
+                        >
                             Interesting{' '}
                             <span className='text-primary font-script fw-normal'>
                                 Project
                             </span>
                         </Title>
                         <ProjectList projects={projects} />
-                        <Title className='mt-5 text-center text-lg-start'>
+                        <Title
+                            type='h2'
+                            className='mt-5 text-center text-lg-start'
+                        >
                             Current{' '}
                             <span className='text-primary font-script fw-normal'>
                                 Certificates
