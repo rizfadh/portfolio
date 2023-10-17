@@ -22,8 +22,9 @@ function Portfolio() {
                             <div className='col text-center text-lg-end order-lg-1 p-4'>
                                 <img
                                     src='/img/avatar.svg'
-                                    className='img-fluid image-skeleton rounded-pill'
+                                    className='img-fluid'
                                     style={{ maxHeight: '30rem' }}
+                                    loading='lazy'
                                     alt='avatar'
                                 />
                             </div>
