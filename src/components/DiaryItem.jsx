@@ -7,7 +7,6 @@ export default function DiaryItem({
     id,
     imageURL,
     title,
-    desc,
     createdBy,
     updatedAt,
 }) {

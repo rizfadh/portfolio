@@ -1,4 +1,5 @@
 import { Form } from 'react-router-dom'
+import TextEditor from './TextEditor'
 
 function DiaryForm({ method, action, imageName, imageURL, title, desc }) {
     return (
@@ -32,17 +33,8 @@ function DiaryForm({ method, action, imageName, imageURL, title, desc }) {
                 />
             </div>
             <div className='mb-3'>
-                <label htmlFor='desc' className='form-label'>
-                    Description
-                </label>
-                <textarea
-                    className='form-control'
-                    id='desc'
-                    rows='10'
-                    name='desc'
-                    defaultValue={desc}
-                    required
-                ></textarea>
+                <label className='form-label'>Description</label>
+                <TextEditor init={desc} name='desc' />
             </div>
             <button type='submit' className='btn btn-primary w-100'>
                 Submit

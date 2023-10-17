@@ -7,9 +7,9 @@ export default function NavBar({ accessToken, darkModeValue, darkModeChange }) {
             <nav className='navbar navbar-expand-lg'>
                 <div className='container'>
                     <div className='d-flex flex-wrap justify-content-between w-100 px-3 py-2 bg-body-tertiary rounded shadow-sm'>
-                        <h1 className='navbar-brand fs-4 m-0 font-script text-primary'>
+                        <p className='navbar-brand fs-4 m-0 font-script text-primary'>
                             Rizky&apos;s Portfolio
-                        </h1>
+                        </p>
                         <button
                             className='navbar-toggler border-0'
                             type='button'

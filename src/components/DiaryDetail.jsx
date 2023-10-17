@@ -3,6 +3,7 @@ import { FaCalendar, FaEdit, FaTrash, FaUser } from 'react-icons/fa'
 import { format, parseISO } from 'date-fns'
 import { id as idn } from 'date-fns/locale'
 import { useQuery, useQueryClient } from 'react-query'
+import parse from 'html-react-parser'
 import { deleteDiaryAction, getDiaryQuery } from '../../utils/api'
 import {
     Link,
@@ -85,6 +86,7 @@ function DiaryDetail() {
                 <FaUser className='me-2' />
                 <small className='text-truncate'>By {createdBy}</small>
             </p>
+
             {context?.accessToken ? (
                 <div className='d-inline-flex gap-2'>
                     <Link
@@ -109,10 +111,9 @@ function DiaryDetail() {
                     </button>
                 </div>
             ) : null}
+
             <hr />
-            <p className='mb-0' style={{ whiteSpace: 'pre-line' }}>
-                {desc}
-            </p>
+            <div className='mb-0'>{parse(desc)}</div>
         </>
     )
 }
