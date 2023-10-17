@@ -73,6 +73,7 @@ function DiaryDetail() {
             <img
                 src={imageURL}
                 className='img-fluid w-100 rounded object-fit-cover mb-3 image-height image-skeleton'
+                loading='lazy'
                 alt={title}
             />
             <Title className='mb-3'>{title}</Title>

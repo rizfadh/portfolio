@@ -30,9 +30,17 @@
     height: 10rem;
 }
 
+.card-image-height {
+    height: 12rem;
+}
+
 @include media-breakpoint-up(md) {
     .image-height {
         height: 30rem;
+    }
+
+    .card-image-height {
+        height: 15rem;
     }
 }
 

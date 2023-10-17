@@ -15,9 +15,9 @@ export default function DiaryItem({
             <div className='card bg-body-tertiary position-relative h-100 border-0 shadow-sm'>
                 <img
                     src={imageURL}
-                    className='card-img-top object-fit-cover image-skeleton'
+                    className='card-img-top object-fit-cover card-image-height image-skeleton'
+                    loading='lazy'
                     alt={title}
-                    height='200'
                 />
                 <div className='card-body'>
                     <p className='card-title fs-5 text-truncate'>{title}</p>
