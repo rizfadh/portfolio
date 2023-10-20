@@ -20,4 +20,15 @@ const getAccessToken = (key) => {
     return accessToken
 }
 
-export { setAccessToken, getAccessToken }
+const getDescriptionString = (string, length) => {
+    const html = /(<([^>]+)>)/gi
+    const newLine = /[\r\n]+/gm
+    return `${string
+        .replace(html, '')
+        .replace(newLine, ' ')
+        .split(' ')
+        .slice(0, length)
+        .join(' ')}...`
+}
+
+export { setAccessToken, getAccessToken, getDescriptionString }
