@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom'
 import Head from './Head'
 import { SwalAlert } from '../../utils/alert'
+import { getDescriptionString } from '../../utils/local'
 
 function DiaryDetail() {
     const { id } = useParams()
@@ -63,11 +64,7 @@ function DiaryDetail() {
         <>
             <Head
                 title={title}
-                desc={`${desc
-                    .replace(/[\r\n]+/gm, ' ')
-                    .split(' ')
-                    .slice(0, 20)
-                    .join(' ')}...`}
+                desc={getDescriptionString(desc, 30)}
                 imageURL={imageURL}
             />
             <img
