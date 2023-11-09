@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import CONSTANTS from '../global/constants'
 import { getAccessToken } from '../../utils/local'
 import { BarLoader } from 'react-spinners'
+import Cursor from '../components/Cursor'
 
 function Root() {
     const DARK_THEME_KEY = CONSTANTS.DARK_THEME_KEY
@@ -30,30 +31,25 @@ function Root() {
         () => getAccessToken(CONSTANTS.ACCESS_TOKEN_KEY) || ''
     )
     return (
-        <>
-            <div className='d-flex flex-column justify-content-between min-vh-100'>
-                <BarLoader
-                    className='position-fixed w-100 z-3'
-                    color='#0d6efd'
-                    loading={state === 'loading' ? true : false}
-                />
+        <div className='d-flex flex-column justify-content-between min-vh-100'>
+            <BarLoader
+                className='position-fixed w-100 z-3'
+                color='#0d6efd'
+                loading={state === 'loading' ? true : false}
+            />
 
-                <NavBar
-                    accessToken={accessToken}
-                    darkModeValue={darkTheme}
-                    darkModeChange={toggleDarkTheme}
-                />
-                <main>
-                    <Outlet context={{ accessToken, setAccessToken }} />
-                </main>
+            <NavBar
+                accessToken={accessToken}
+                darkModeValue={darkTheme}
+                darkModeChange={toggleDarkTheme}
+            />
+            <main>
+                <Outlet context={{ accessToken, setAccessToken }} />
+            </main>
 
-                <Footer
-                    accessToken={accessToken}
-                    setAccessToken={setAccessToken}
-                />
-                <ScrollRestoration getKey={(location) => location.pathname} />
-            </div>
-        </>
+            <Footer accessToken={accessToken} setAccessToken={setAccessToken} />
+            <ScrollRestoration getKey={(location) => location.pathname} />
+        </div>
     )
 }
 

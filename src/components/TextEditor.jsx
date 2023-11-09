@@ -34,7 +34,7 @@ function TextEditor({ init, name }) {
                 ],
                 toolbar:
                     'undo redo | blocks | ' +
-                    'bold italic forecolor | alignleft aligncenter ' +
+                    'bold italic forecolor link | alignleft aligncenter ' +
                     'alignright alignjustify | bullist numlist outdent indent | ' +
                     'removeformat | help',
                 content_style:
