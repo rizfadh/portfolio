@@ -17,7 +17,13 @@ import { Link } from '@ckeditor/ckeditor5-link'
 import { List } from '@ckeditor/ckeditor5-list'
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph'
 import { Alignment } from '@ckeditor/ckeditor5-alignment'
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table'
+import {
+    Table,
+    TableCaption,
+    TableCellProperties,
+    TableProperties,
+    TableToolbar,
+} from '@ckeditor/ckeditor5-table'
 import { CodeBlock } from '@ckeditor/ckeditor5-code-block'
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent'
 import { Font } from '@ckeditor/ckeditor5-font'
@@ -46,6 +52,9 @@ function TextEditor({ value, setValue }) {
             Alignment,
             Table,
             TableToolbar,
+            TableProperties,
+            TableCellProperties,
+            TableCaption,
             CodeBlock,
             Indent,
             IndentBlock,
@@ -74,7 +83,14 @@ function TextEditor({ value, setValue }) {
             ],
         },
         table: {
-            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+            contentToolbar: [
+                'tableColumn',
+                'tableRow',
+                'mergeTableCells',
+                'tableProperties',
+                'tableCellProperties',
+                'toggleTableCaption',
+            ],
         },
         toolbar: [
             'undo',

@@ -65,3 +65,8 @@ body {
 html {
     scrollbar-width: none;
 }
+
+// CKEditor
+.ck-editor__editable_inline:not(.ck-comment__input *) {
+    min-height: 10rem;
+}
