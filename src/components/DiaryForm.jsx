@@ -1,11 +1,19 @@
 import { Form } from 'react-router-dom'
 import TextEditor from './TextEditor'
+import { useState } from 'react'
 
 function DiaryForm({ method, action, imageName, imageURL, title, desc }) {
+    const [descValue, setDescValue] = useState(desc)
+
     return (
         <Form method={method} action={action} encType='multipart/form-data'>
-            <input type='hidden' name='imageName' value={imageName} />
-            <input type='hidden' name='imageURL' value={imageURL} />
+            <input
+                type='hidden'
+                aria-hidden
+                name='imageName'
+                value={imageName}
+            />
+            <input type='hidden' aria-hidden name='imageURL' value={imageURL} />
             <div className='mb-3'>
                 <label htmlFor='image' className='form-label'>
                     Image
@@ -33,8 +41,15 @@ function DiaryForm({ method, action, imageName, imageURL, title, desc }) {
                 />
             </div>
             <div className='mb-3'>
+                <textarea
+                    hidden
+                    aria-hidden
+                    readOnly
+                    name='desc'
+                    value={descValue}
+                />
                 <label className='form-label'>Description</label>
-                <TextEditor init={desc} name='desc' />
+                <TextEditor value={descValue} setValue={setDescValue} />
             </div>
             <button type='submit' className='btn btn-primary w-100'>
                 Submit
