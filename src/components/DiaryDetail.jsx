@@ -14,6 +14,7 @@ import {
 import Head from './Head'
 import { SwalAlert } from '../../utils/alert'
 import { getDescriptionString } from '../../utils/local'
+import '../css/content-styles.css'
 
 function DiaryDetail() {
     const { id } = useParams()
@@ -111,7 +112,7 @@ function DiaryDetail() {
             ) : null}
 
             <hr />
-            <div className='mb-0'>{parse(desc)}</div>
+            <div className='mb-0 ck-content'>{parse(desc)}</div>
         </>
     )
 }

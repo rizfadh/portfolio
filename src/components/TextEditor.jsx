@@ -25,6 +25,9 @@ import { Highlight } from '@ckeditor/ckeditor5-highlight'
 
 function TextEditor({ value, setValue }) {
     const config = {
+        ui: {
+            viewportOffset: { top: 100 },
+        },
         plugins: [
             Essentials,
             Autoformat,
