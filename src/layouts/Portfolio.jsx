@@ -21,9 +21,8 @@ function Portfolio() {
                         <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
                             <div className='col text-center text-lg-end order-lg-1 p-4'>
                                 <img
-                                    src='/img/avatar.svg'
-                                    className='img-fluid'
-                                    style={{ maxHeight: '30rem' }}
+                                    src='/img/avatar.webp'
+                                    className='avatar-image-height image-skeleton rounded-circle'
                                     loading='lazy'
                                     alt='avatar'
                                 />
@@ -36,7 +35,9 @@ function Portfolio() {
                                     </span>
                                 </h1>
                                 <p className='lead text-center text-lg-start'>
-                                    Android and Front-End Web Developer
+                                    <small>
+                                        Android and Front-End Web Developer
+                                    </small>
                                 </p>
                                 <p className='lh-lg'>
                                     I am a student majoring in Informatics

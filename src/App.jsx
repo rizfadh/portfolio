@@ -8,7 +8,6 @@ import Portfolio from './layouts/Portfolio'
 import Diary from './layouts/Diary'
 import DiaryDetail from './components/DiaryDetail'
 import Root from './layouts/Root'
-import DiaryList from './components/DiaryList'
 import {
     addDiaryAction,
     diariesLoader,
@@ -24,6 +23,7 @@ import Protected from './layouts/Protected'
 import AddDiary from './layouts/AddDiary'
 import { HelmetProvider } from 'react-helmet-async'
 import EditDiary from './layouts/EditDiary'
+import DiaryCollection from './components/DiaryCollection'
 
 const queryClient = new QueryClient()
 
@@ -34,7 +34,7 @@ const router = createBrowserRouter(
             <Route path='diary' element={<Diary />}>
                 <Route
                     index
-                    element={<DiaryList />}
+                    element={<DiaryCollection />}
                     loader={diariesLoader(queryClient)}
                 />
                 <Route

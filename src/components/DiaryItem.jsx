@@ -8,7 +8,7 @@ export default function DiaryItem({
     imageURL,
     title,
     createdBy,
-    updatedAt,
+    createdAt,
 }) {
     return (
         <div className='col'>
@@ -24,14 +24,14 @@ export default function DiaryItem({
                     <p className='d-flex align-items-center card-text mb-2 text-body-secondary'>
                         <FaCalendar className='me-2' />
                         <small className='text-truncate'>
-                            {format(parseISO(updatedAt), 'PPPPp', {
+                            {format(parseISO(createdAt), 'PPPPp', {
                                 locale: idn,
                             })}
                         </small>
                     </p>
                     <p className='d-flex align-items-center card-text text-body-secondary'>
                         <FaUser className='me-2' />
-                        <small className='text-truncate'>By {createdBy}</small>
+                        <small className='text-truncate'>{createdBy}</small>
                     </p>
                 </div>
                 <Link to={`/diary/${id}`} className='stretched-link'></Link>

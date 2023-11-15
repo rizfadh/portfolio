@@ -1,14 +1,9 @@
-import { useQuery } from 'react-query'
-import { getDiariesQuery } from '../../utils/api'
-import DiaryItem from '../components/DiaryItem'
 import Title from '../components/Title'
 import { FaPlusCircle } from 'react-icons/fa'
-import { Link, useOutletContext } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import DiaryList from '../components/DiaryList'
 
-function Dashboard() {
-    const { data } = useQuery(getDiariesQuery())
-    const { data: diaries } = data
-
+export default function Dashboard() {
     return (
         <article>
             <section>
@@ -24,22 +19,9 @@ function Dashboard() {
                             <FaPlusCircle className='display-2 text-primary bg-body-tertiary rounded-pill shadow-sm' />
                         </Link>
                     </div>
-                    <div className='row row-cols-1 row-cols-lg-3 g-3 mt-4'>
-                        {diaries.map((diary) => (
-                            <DiaryItem
-                                key={diary._id}
-                                id={diary._id}
-                                imageURL={diary.imageURL}
-                                title={diary.title}
-                                createdBy={diary.createdBy}
-                                updatedAt={diary.updatedAt}
-                            />
-                        ))}
-                    </div>
+                    <DiaryList />
                 </div>
             </section>
         </article>
     )
 }
-
-export default Dashboard

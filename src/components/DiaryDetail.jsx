@@ -82,7 +82,7 @@ function DiaryDetail() {
             </p>
             <p className='d-flex align-items-center text-body-secondary'>
                 <FaUser className='me-2' />
-                <small className='text-truncate'>By {createdBy}</small>
+                <small className='text-truncate'>{createdBy}</small>
             </p>
 
             {context?.accessToken ? (

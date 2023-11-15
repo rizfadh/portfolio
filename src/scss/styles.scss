@@ -26,6 +26,10 @@
     }
 }
 
+.avatar-image-height {
+    height: 15rem;
+}
+
 .image-height {
     height: 10rem;
 }
@@ -35,6 +39,10 @@
 }
 
 @include media-breakpoint-up(md) {
+    .avatar-image-height {
+        height: 30rem;
+    }
+
     .image-height {
         height: 30rem;
     }
