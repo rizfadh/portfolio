@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2'
 import CONSTANTS from '../src/global/constants'
 import { getAccessToken, setAccessToken } from './local'
 import { imagesRef } from './firebaseConfig'
@@ -247,6 +246,7 @@ export {
     getDiaryQuery,
     diaryLoader,
     loginAction,
+    uploadImage,
     addDiaryAction,
     editDiaryAction,
     deleteDiaryAction,
