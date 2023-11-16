@@ -28,6 +28,19 @@ import { CodeBlock } from '@ckeditor/ckeditor5-code-block'
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent'
 import { Font } from '@ckeditor/ckeditor5-font'
 import { Highlight } from '@ckeditor/ckeditor5-highlight'
+import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload'
+import {
+    ImageInsert,
+    AutoImage,
+    Image,
+    ImageCaption,
+    ImageResize,
+    ImageStyle,
+    ImageToolbar,
+    ImageUpload,
+} from '@ckeditor/ckeditor5-image'
+import { LinkImage } from '@ckeditor/ckeditor5-link'
+import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed'
 
 function TextEditor({ value, setValue }) {
     const config = {
@@ -60,6 +73,17 @@ function TextEditor({ value, setValue }) {
             IndentBlock,
             Font,
             Highlight,
+            Image,
+            ImageInsert,
+            AutoImage,
+            ImageToolbar,
+            ImageCaption,
+            ImageStyle,
+            ImageResize,
+            LinkImage,
+            ImageUpload,
+            Base64UploadAdapter,
+            MediaEmbed,
         ],
         heading: {
             options: [
@@ -92,6 +116,22 @@ function TextEditor({ value, setValue }) {
                 'toggleTableCaption',
             ],
         },
+        image: {
+            toolbar: [
+                'imageStyle:inline',
+                'imageStyle:side',
+                '|',
+                'imageStyle:wrapText',
+                'imageStyle:breakText',
+                '|',
+                'toggleImageCaption',
+                'imageTextAlternative',
+                'linkImage',
+            ],
+            insert: {
+                type: 'auto',
+            },
+        },
         toolbar: [
             'undo',
             'redo',
@@ -111,15 +151,17 @@ function TextEditor({ value, setValue }) {
                 items: ['strikethrough', 'superscript', 'subscript', 'code'],
             },
             'highlight',
+            'blockQuote',
             '|',
             'bulletedList',
             'numberedList',
             'outdent',
             'indent',
             '|',
-            'blockQuote',
             'insertTable',
             'codeBlock',
+            'insertImage',
+            'mediaEmbed',
         ],
     }
 
