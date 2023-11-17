@@ -3,9 +3,10 @@ import ContactList from '../components/ContactList'
 import ProjectList from '../components/ProjectList'
 import SkillsList from '../components/SkillsList'
 import Title from '../components/Title'
-import { projects, certificates } from '../assets/portfolioData.json'
+import { projects, certificates } from '../assets/portfolioData'
 import CertificatesList from '../components/CertificatesList'
 import Head from '../components/Head'
+import imgAvatar from '../assets/img/avatar.webp'
 
 function Portfolio() {
     return (
@@ -21,7 +22,7 @@ function Portfolio() {
                         <div className='row row-cols-1 row-cols-lg-2 align-items-center'>
                             <div className='col text-center text-lg-end order-lg-1 p-4'>
                                 <img
-                                    src='/img/avatar.webp'
+                                    src={imgAvatar}
                                     className='avatar-image-height image-skeleton rounded-circle'
                                     loading='lazy'
                                     alt='avatar'
