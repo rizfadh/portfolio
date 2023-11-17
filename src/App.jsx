@@ -25,17 +25,25 @@ const importDefault = async (path) => {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
-            <Route index lazy={() => importDefault('./layouts/Portfolio')} />
-            <Route path='diary' lazy={() => importDefault('./layouts/Diary')}>
+            <Route
+                index
+                lazy={async () => importDefault('./layouts/Portfolio')}
+            />
+            <Route
+                path='diary'
+                lazy={async () => importDefault('./layouts/Diary')}
+            >
                 <Route
                     index
                     loader={diariesLoader(queryClient)}
-                    lazy={() => importDefault('./components/DiaryCollection')}
+                    lazy={async () =>
+                        importDefault('./components/DiaryCollection')
+                    }
                 />
                 <Route
                     path=':id'
                     loader={diaryLoader(queryClient)}
-                    lazy={() => importDefault('./components/DiaryDetail')}
+                    lazy={async () => importDefault('./components/DiaryDetail')}
                 />
             </Route>
             <Route
