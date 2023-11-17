@@ -17,59 +17,87 @@ import Root from './layouts/Root'
 import Protected from './layouts/Protected'
 
 const queryClient = new QueryClient()
-const importDefault = async (path) => {
-    const component = await import(path)
-    return { Component: component.default }
-}
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
             <Route
                 index
-                lazy={async () => importDefault('./layouts/Portfolio')}
+                lazy={async () => {
+                    const component = await import('./layouts/Portfolio')
+                    return { Component: component.default }
+                }}
             />
             <Route
                 path='diary'
-                lazy={async () => importDefault('./layouts/Diary')}
+                lazy={async () => {
+                    const component = await import('./layouts/Diary')
+                    return { Component: component.default }
+                }}
             >
                 <Route
                     index
                     loader={diariesLoader(queryClient)}
-                    lazy={async () =>
-                        importDefault('./components/DiaryCollection')
-                    }
+                    lazy={async () => {
+                        const component = await import(
+                            './components/DiaryCollection'
+                        )
+                        return { Component: component.default }
+                    }}
                 />
                 <Route
                     path=':id'
                     loader={diaryLoader(queryClient)}
-                    lazy={async () => importDefault('./components/DiaryDetail')}
+                    lazy={async () => {
+                        const component = await import(
+                            './components/DiaryDetail'
+                        )
+                        return { Component: component.default }
+                    }}
                 />
             </Route>
             <Route
                 path='login'
                 action={loginAction}
-                lazy={() => importDefault('./layouts/Login')}
+                lazy={async () => {
+                    const component = await import('./layouts/Login')
+                    return { Component: component.default }
+                }}
             />
             <Route element={<Protected />}>
                 <Route
                     path='dashboard'
                     loader={diariesLoader(queryClient)}
-                    lazy={() => importDefault('./layouts/Dashboard')}
+                    lazy={async () => {
+                        const component = await import('./layouts/Dashboard')
+                        return { Component: component.default }
+                    }}
                 />
                 <Route
                     path='add'
                     action={addDiaryAction(queryClient)}
-                    lazy={() => importDefault('./layouts/AddDiary')}
+                    lazy={async () => {
+                        const component = await import('./layouts/AddDiary')
+                        return { Component: component.default }
+                    }}
                 />
                 <Route
                     path='edit/:id'
                     loader={diaryLoader(queryClient)}
                     action={editDiaryAction(queryClient)}
-                    lazy={() => importDefault('./layouts/EditDiary')}
+                    lazy={async () => {
+                        const component = await import('./layouts/EditDiary')
+                        return { Component: component.default }
+                    }}
                 />
             </Route>
-            <Route path='*' lazy={() => importDefault('./layouts/NotFound')} />
+            <Route
+                path='*'
+                lazy={async () => {
+                    const component = await import('./layouts/NotFound')
+                    return { Component: component.default }
+                }}
+            />
         </Route>
     )
 )
