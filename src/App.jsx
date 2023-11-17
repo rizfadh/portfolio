@@ -13,58 +13,55 @@ import {
 } from '../utils/api'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { HelmetProvider } from 'react-helmet-async'
-import { Suspense, lazy } from 'react'
-
-const Root = lazy(() => import('./layouts/Root'))
-const Portfolio = lazy(() => import('./layouts/Portfolio'))
-const Diary = lazy(() => import('./layouts/Diary'))
-const DiaryDetail = lazy(() => import('./components/DiaryDetail'))
-const NotFound = lazy(() => import('./layouts/NotFound'))
-const Login = lazy(() => import('./layouts/Login'))
-const Dashboard = lazy(() => import('./layouts/Dashboard'))
-const Protected = lazy(() => import('./layouts/Protected'))
-const AddDiary = lazy(() => import('./layouts/AddDiary'))
-const EditDiary = lazy(() => import('./layouts/EditDiary'))
-const DiaryCollection = lazy(() => import('./components/DiaryCollection'))
+import Root from './layouts/Root'
+import Protected from './layouts/Protected'
 
 const queryClient = new QueryClient()
+const importDefault = async (path) => {
+    const component = await import(path)
+    return { Component: component.default }
+}
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Root />}>
-            <Route index element={<Portfolio />} />
-            <Route path='diary' element={<Diary />}>
+            <Route index lazy={() => importDefault('./layouts/Portfolio')} />
+            <Route path='diary' lazy={() => importDefault('./layouts/Diary')}>
                 <Route
                     index
-                    element={<DiaryCollection />}
                     loader={diariesLoader(queryClient)}
+                    lazy={() => importDefault('./components/DiaryCollection')}
                 />
                 <Route
                     path=':id'
-                    element={<DiaryDetail />}
                     loader={diaryLoader(queryClient)}
+                    lazy={() => importDefault('./components/DiaryDetail')}
                 />
             </Route>
-            <Route path='login' element={<Login />} action={loginAction} />
+            <Route
+                path='login'
+                action={loginAction}
+                lazy={() => importDefault('./layouts/Login')}
+            />
             <Route element={<Protected />}>
                 <Route
                     path='dashboard'
-                    element={<Dashboard />}
                     loader={diariesLoader(queryClient)}
+                    lazy={() => importDefault('./layouts/Dashboard')}
                 />
                 <Route
                     path='add'
-                    element={<AddDiary />}
                     action={addDiaryAction(queryClient)}
+                    lazy={() => importDefault('./layouts/AddDiary')}
                 />
                 <Route
                     path='edit/:id'
-                    element={<EditDiary />}
                     loader={diaryLoader(queryClient)}
                     action={editDiaryAction(queryClient)}
+                    lazy={() => importDefault('./layouts/EditDiary')}
                 />
             </Route>
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' lazy={() => importDefault('./layouts/NotFound')} />
         </Route>
     )
 )
@@ -73,9 +70,7 @@ function App() {
     return (
         <HelmetProvider>
             <QueryClientProvider client={queryClient}>
-                <Suspense>
-                    <RouterProvider router={router} />
-                </Suspense>
+                <RouterProvider router={router} />
             </QueryClientProvider>
         </HelmetProvider>
     )
