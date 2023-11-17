@@ -4,10 +4,6 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
 } from 'react-router-dom'
-import Portfolio from './layouts/Portfolio'
-import Diary from './layouts/Diary'
-import DiaryDetail from './components/DiaryDetail'
-import Root from './layouts/Root'
 import {
     addDiaryAction,
     diariesLoader,
@@ -15,15 +11,21 @@ import {
     editDiaryAction,
     loginAction,
 } from '../utils/api'
-import NotFound from './layouts/NotFound'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import Login from './layouts/Login'
-import Dashboard from './layouts/Dashboard'
-import Protected from './layouts/Protected'
-import AddDiary from './layouts/AddDiary'
 import { HelmetProvider } from 'react-helmet-async'
-import EditDiary from './layouts/EditDiary'
-import DiaryCollection from './components/DiaryCollection'
+import { Suspense, lazy } from 'react'
+
+const Root = lazy(() => import('./layouts/Root'))
+const Portfolio = lazy(() => import('./layouts/Portfolio'))
+const Diary = lazy(() => import('./layouts/Diary'))
+const DiaryDetail = lazy(() => import('./components/DiaryDetail'))
+const NotFound = lazy(() => import('./layouts/NotFound'))
+const Login = lazy(() => import('./layouts/Login'))
+const Dashboard = lazy(() => import('./layouts/Dashboard'))
+const Protected = lazy(() => import('./layouts/Protected'))
+const AddDiary = lazy(() => import('./layouts/AddDiary'))
+const EditDiary = lazy(() => import('./layouts/EditDiary'))
+const DiaryCollection = lazy(() => import('./components/DiaryCollection'))
 
 const queryClient = new QueryClient()
 
@@ -71,7 +73,9 @@ function App() {
     return (
         <HelmetProvider>
             <QueryClientProvider client={queryClient}>
-                <RouterProvider router={router} />
+                <Suspense>
+                    <RouterProvider router={router} />
+                </Suspense>
             </QueryClientProvider>
         </HelmetProvider>
     )
