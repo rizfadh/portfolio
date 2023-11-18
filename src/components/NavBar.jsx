@@ -58,6 +58,8 @@ export default function NavBar({ accessToken, darkModeValue, darkModeChange }) {
                             <button
                                 type='button'
                                 className='d-flex btn fs-3 text-primary border-0 mx-auto mx-lg-0'
+                                aria-label='Change darkmode'
+                                title='Change darkmode'
                                 onClick={darkModeChange}
                             >
                                 {darkModeValue === 'light' ? (

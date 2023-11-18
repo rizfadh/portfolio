@@ -14,6 +14,7 @@ export default function DiaryList() {
                     id={diary._id}
                     imageURL={diary.imageURL}
                     title={diary.title}
+                    desc={diary.desc}
                     createdBy={diary.createdBy}
                     createdAt={diary.createdAt}
                 />

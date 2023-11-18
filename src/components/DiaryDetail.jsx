@@ -88,6 +88,7 @@ function DiaryDetail() {
                     </Link>
                     <button
                         className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
+                        aria-label='Delete diary'
                         onClick={() => {
                             const accessToken = context?.accessToken
                             deleteDiaryHandler({
@@ -119,6 +120,8 @@ function DiaryDetail() {
                 </div>
                 <button
                     className='btn fs-3 d-flex justify-content-center align-items-center p-0 text-secondary'
+                    aria-label='Share article'
+                    title='Share article'
                     onClick={() => {
                         const url = window.location.href
                         shareArticle({ title: title, text: linkDesc, url: url })
@@ -127,7 +130,7 @@ function DiaryDetail() {
                     <IoShareOutline />
                 </button>
             </div>
-            <hr />
+            <hr className='border border-light-subtle opacity-50' />
             <div className='mb-0 ck-content'>{parse(desc)}</div>
         </div>
     )
