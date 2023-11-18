@@ -20,15 +20,35 @@ const getAccessToken = (key) => {
     return accessToken
 }
 
-const getDescriptionString = (string, length) => {
+const getWords = (string) => {
     const html = /(<([^>]+)>)/gi
     const newLine = /[\r\n]+/gm
-    return `${string
-        .replace(html, '')
-        .replace(newLine, ' ')
-        .split(' ')
-        .slice(0, length)
-        .join(' ')}...`
+    return string.replace(html, '').replace(newLine, ' ').split(' ')
 }
 
-export { setAccessToken, getAccessToken, getDescriptionString }
+const getDescriptionString = (string, length) => {
+    const words = getWords(string)
+    return `${words.slice(0, length).join(' ')}...`
+}
+
+const getReadingTime = (string) => {
+    const words = getWords(string).length
+    const wpm = 230
+    return Math.ceil(words / wpm)
+}
+
+const shareArticle = async ({ title, text, url }) => {
+    await navigator.share({
+        title,
+        text,
+        url,
+    })
+}
+
+export {
+    setAccessToken,
+    getAccessToken,
+    getDescriptionString,
+    getReadingTime,
+    shareArticle,
+}

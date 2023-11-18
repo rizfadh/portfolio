@@ -13,6 +13,10 @@
     overflow: hidden;
 }
 
+.text-justify {
+    text-align: justify !important;
+}
+
 .image-skeleton {
     animation: skeleton-loading 1s linear infinite alternate;
 }
@@ -26,8 +30,10 @@
     }
 }
 
-.avatar-image-height {
-    height: 15rem;
+.avatar-image-size {
+    $size: 15rem;
+    width: $size;
+    height: $size;
 }
 
 .image-height {
@@ -39,16 +45,51 @@
 }
 
 @include media-breakpoint-up(md) {
-    .avatar-image-height {
-        height: 30rem;
-    }
-
-    .image-height {
-        height: 30rem;
+    .avatar-image-size {
+        $size: 20rem;
+        width: $size;
+        height: $size;
     }
 
     .card-image-height {
         height: 15rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .avatar-image-size {
+        $size: 25rem;
+        width: $size;
+        height: $size;
+    }
+
+    .px-article {
+        padding-left: ($spacer * 8) !important;
+        padding-right: ($spacer * 8) !important;
+    }
+
+    .article-image-height {
+        height: 25rem;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .avatar-image-size {
+        $size: 30rem;
+        width: $size;
+        height: $size;
+    }
+
+    .px-article {
+        padding-left: ($spacer * 13) !important;
+        padding-right: ($spacer * 13) !important;
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    .px-article {
+        padding-left: ($spacer * 18) !important;
+        padding-right: ($spacer * 18) !important;
     }
 }
 

@@ -13,10 +13,13 @@ export default function Footer({ accessToken, setAccessToken }) {
             <div className='container pt-4 pb-3'>
                 <div className='text-center'>
                     <p className='m-0'>
-                        Built with <FaReact className='fs-3' />{' '}
-                        <FaBootstrap className='fs-3' />{' '}
-                        <FaNodeJs className='fs-3' /> by Muhammad Rizky
-                        Fadhillah &copy; 2023
+                        Built with{' '}
+                        <span className='text-primary'>
+                            <FaReact className='fs-3' />{' '}
+                            <FaBootstrap className='fs-3' />{' '}
+                            <FaNodeJs className='fs-3' />
+                        </span>{' '}
+                        by Muhammad Rizky Fadhillah &copy; 2023
                     </p>
                     {accessToken ? (
                         <button
