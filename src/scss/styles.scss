@@ -44,11 +44,21 @@
     height: 12rem;
 }
 
+.article-image-height {
+    height: 15rem;
+}
+
 .article-width {
+    width: 100%;
+    min-width: 0;
     max-width: 680px;
 }
 
 @include media-breakpoint-up(md) {
+    .article-image-height {
+        height: 25rem;
+    }
+
     .avatar-image-size {
         $size: 20rem;
         width: $size;
@@ -65,10 +75,6 @@
         $size: 25rem;
         width: $size;
         height: $size;
-    }
-
-    .article-image-height {
-        height: 25rem;
     }
 }
 
