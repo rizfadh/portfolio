@@ -1,5 +1,6 @@
 import Title from './Title'
-import { FaCalendar, FaEdit, FaTrash, FaUser } from 'react-icons/fa'
+import { FaEdit, FaTrash } from 'react-icons/fa'
+import { IoShareOutline } from 'react-icons/io5'
 import { format, parseISO } from 'date-fns'
 import { id as idn } from 'date-fns/locale'
 import { useQuery, useQueryClient } from 'react-query'
@@ -13,7 +14,11 @@ import {
 } from 'react-router-dom'
 import Head from './Head'
 import { SwalAlert } from '../../utils/alert'
-import { getDescriptionString } from '../../utils/local'
+import {
+    getDescriptionString,
+    getReadingTime,
+    shareArticle,
+} from '../../utils/local'
 import '../css/content-styles.css'
 
 function DiaryDetail() {
@@ -23,6 +28,7 @@ function DiaryDetail() {
     const context = useOutletContext()
     const navigate = useNavigate()
     const queryClient = useQueryClient()
+    const linkDesc = getDescriptionString(desc, 30)
 
     const deleteDiaryHandler = ({
         id,
@@ -62,32 +68,18 @@ function DiaryDetail() {
     }
 
     return (
-        <>
-            <Head
-                title={title}
-                desc={getDescriptionString(desc, 30)}
-                imageURL={imageURL}
-            />
+        <div className='px-article'>
+            <Head title={title} desc={linkDesc} imageURL={imageURL} />
             <img
                 src={imageURL}
-                className='img-fluid w-100 rounded object-fit-cover mb-3 image-height image-skeleton'
+                className='img-fluid w-100 rounded object-fit-cover mb-3 article-image-height image-skeleton shadow-sm'
                 loading='lazy'
                 alt={title}
             />
-            <Title className='mb-3'>{title}</Title>
-            <p className='mb-2 d-flex align-items-center text-body-secondary'>
-                <FaCalendar className='me-2' />
-                <small className='text-truncate'>
-                    {format(parseISO(createdAt), 'PPPPp', { locale: idn })}
-                </small>
-            </p>
-            <p className='d-flex align-items-center text-body-secondary'>
-                <FaUser className='me-2' />
-                <small className='text-truncate'>{createdBy}</small>
-            </p>
+            <Title>{title}</Title>
 
             {context?.accessToken ? (
-                <div className='d-inline-flex gap-2'>
+                <div className='d-inline-flex gap-2 my-3'>
                     <Link
                         to={`/edit/${id}`}
                         className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
@@ -110,10 +102,34 @@ function DiaryDetail() {
                     </button>
                 </div>
             ) : null}
-
+            <div className='d-flex align-items-center justify-content-between'>
+                <div>
+                    <p className='d-flex align-items-center text-body-secondary mb-0 fw-bold'>
+                        <small className='text-truncate'>{createdBy}</small>
+                    </p>
+                    <p className='d-inline-flex justify-content-center align-items-center text-body-secondary mb-0'>
+                        <small className='text-truncate'>
+                            {format(parseISO(createdAt), 'PPp', {
+                                locale: idn,
+                            })}
+                            <span className='px-2'>·</span>
+                            {`${getReadingTime(desc)} min read`}
+                        </small>
+                    </p>
+                </div>
+                <button
+                    className='btn fs-3 d-flex justify-content-center align-items-center p-0 text-secondary'
+                    onClick={() => {
+                        const url = window.location.href
+                        shareArticle({ title: title, text: linkDesc, url: url })
+                    }}
+                >
+                    <IoShareOutline />
+                </button>
+            </div>
             <hr />
             <div className='mb-0 ck-content'>{parse(desc)}</div>
-        </>
+        </div>
     )
 }
 

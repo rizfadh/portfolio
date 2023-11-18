@@ -43,12 +43,33 @@
         height: 30rem;
     }
 
-    .image-height {
-        height: 30rem;
-    }
-
     .card-image-height {
         height: 15rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .px-article {
+        padding-left: ($spacer * 8) !important;
+        padding-right: ($spacer * 8) !important;
+    }
+
+    .article-image-height {
+        height: 25rem;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .px-article {
+        padding-left: ($spacer * 13) !important;
+        padding-right: ($spacer * 13) !important;
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    .px-article {
+        padding-left: ($spacer * 18) !important;
+        padding-right: ($spacer * 18) !important;
     }
 }
 
