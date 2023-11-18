@@ -68,70 +68,76 @@ function DiaryDetail() {
     }
 
     return (
-        <div className='px-article'>
-            <Head title={title} desc={linkDesc} imageURL={imageURL} />
-            <img
-                src={imageURL}
-                className='w-100 rounded object-fit-cover mb-3 article-image-height image-skeleton shadow-sm'
-                loading='lazy'
-                alt={title}
-            />
-            <Title>{title}</Title>
+        <div className='d-flex justify-content-center'>
+            <div className='article-width'>
+                <Head title={title} desc={linkDesc} imageURL={imageURL} />
+                <img
+                    src={imageURL}
+                    className='w-100 rounded object-fit-cover mb-3 article-image-height image-skeleton shadow-sm'
+                    loading='lazy'
+                    alt={title}
+                />
+                <Title>{title}</Title>
 
-            {context?.accessToken ? (
-                <div className='d-inline-flex gap-2 my-3'>
-                    <Link
-                        to={`/edit/${id}`}
-                        className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
-                    >
-                        Edit <FaEdit />
-                    </Link>
+                {context?.accessToken ? (
+                    <div className='d-inline-flex gap-2 my-3'>
+                        <Link
+                            to={`/edit/${id}`}
+                            className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
+                        >
+                            Edit <FaEdit />
+                        </Link>
+                        <button
+                            className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
+                            aria-label='Delete diary'
+                            onClick={() => {
+                                const accessToken = context?.accessToken
+                                deleteDiaryHandler({
+                                    id,
+                                    imageName,
+                                    accessToken,
+                                    queryClient,
+                                })
+                            }}
+                        >
+                            Delete <FaTrash />
+                        </button>
+                    </div>
+                ) : null}
+                <div className='d-flex align-items-center justify-content-between'>
+                    <div>
+                        <p className='d-flex align-items-center text-body-secondary mb-0 fw-bold'>
+                            <small className='text-truncate'>{createdBy}</small>
+                        </p>
+                        <p className='d-inline-flex justify-content-center align-items-center text-body-secondary mb-0'>
+                            <small className='text-truncate'>
+                                {format(parseISO(createdAt), 'PPp', {
+                                    locale: idn,
+                                })}
+                                <span className='px-2'>·</span>
+                                {`${getReadingTime(desc)} min read`}
+                            </small>
+                        </p>
+                    </div>
                     <button
-                        className='btn btn-primary d-inline-flex justify-content-center align-items-center gap-2'
-                        aria-label='Delete diary'
+                        className='btn fs-3 d-flex justify-content-center align-items-center p-0 text-secondary'
+                        aria-label='Share article'
+                        title='Share article'
                         onClick={() => {
-                            const accessToken = context?.accessToken
-                            deleteDiaryHandler({
-                                id,
-                                imageName,
-                                accessToken,
-                                queryClient,
+                            const url = window.location.href
+                            shareArticle({
+                                title: title,
+                                text: linkDesc,
+                                url: url,
                             })
                         }}
                     >
-                        Delete <FaTrash />
+                        <IoShareOutline />
                     </button>
                 </div>
-            ) : null}
-            <div className='d-flex align-items-center justify-content-between'>
-                <div>
-                    <p className='d-flex align-items-center text-body-secondary mb-0 fw-bold'>
-                        <small className='text-truncate'>{createdBy}</small>
-                    </p>
-                    <p className='d-inline-flex justify-content-center align-items-center text-body-secondary mb-0'>
-                        <small className='text-truncate'>
-                            {format(parseISO(createdAt), 'PPp', {
-                                locale: idn,
-                            })}
-                            <span className='px-2'>·</span>
-                            {`${getReadingTime(desc)} min read`}
-                        </small>
-                    </p>
-                </div>
-                <button
-                    className='btn fs-3 d-flex justify-content-center align-items-center p-0 text-secondary'
-                    aria-label='Share article'
-                    title='Share article'
-                    onClick={() => {
-                        const url = window.location.href
-                        shareArticle({ title: title, text: linkDesc, url: url })
-                    }}
-                >
-                    <IoShareOutline />
-                </button>
+                <hr className='border border-light-subtle opacity-50' />
+                <div className='mb-0 ck-content'>{parse(desc)}</div>
             </div>
-            <hr className='border border-light-subtle opacity-50' />
-            <div className='mb-0 ck-content'>{parse(desc)}</div>
         </div>
     )
 }

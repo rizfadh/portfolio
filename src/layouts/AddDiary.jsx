@@ -25,14 +25,16 @@ function AddDiary() {
         <article>
             <section>
                 <div className='container'>
-                    <div className='px-article'>
-                        <Title className='text-center text-lg-start mb-4'>
-                            Add{' '}
-                            <span className='text-primary font-script fw-normal'>
-                                New Diary
-                            </span>
-                        </Title>
-                        <DiaryForm method='post' action='/add' />
+                    <div className='d-flex justify-content-center'>
+                        <div className='article-width'>
+                            <Title className='text-center text-lg-start mb-4'>
+                                Add{' '}
+                                <span className='text-primary font-script fw-normal'>
+                                    New Diary
+                                </span>
+                            </Title>
+                            <DiaryForm method='post' action='/add' />
+                        </div>
                     </div>
                 </div>
             </section>

@@ -44,6 +44,10 @@
     height: 12rem;
 }
 
+.article-width {
+    max-width: 680px;
+}
+
 @include media-breakpoint-up(md) {
     .avatar-image-size {
         $size: 20rem;
@@ -63,11 +67,6 @@
         height: $size;
     }
 
-    .px-article {
-        padding-left: ($spacer * 8) !important;
-        padding-right: ($spacer * 8) !important;
-    }
-
     .article-image-height {
         height: 25rem;
     }
@@ -78,18 +77,6 @@
         $size: 30rem;
         width: $size;
         height: $size;
-    }
-
-    .px-article {
-        padding-left: ($spacer * 13) !important;
-        padding-right: ($spacer * 13) !important;
-    }
-}
-
-@include media-breakpoint-up(xxl) {
-    .px-article {
-        padding-left: ($spacer * 18) !important;
-        padding-right: ($spacer * 18) !important;
     }
 }
 
