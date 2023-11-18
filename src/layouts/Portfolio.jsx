@@ -23,7 +23,7 @@ function Portfolio() {
                             <div className='col text-center text-lg-end order-lg-1 p-4'>
                                 <img
                                     src={imgAvatar}
-                                    className='avatar-image-height image-skeleton rounded-circle'
+                                    className='avatar-image-size image-skeleton rounded-circle'
                                     loading='lazy'
                                     alt='avatar'
                                 />
