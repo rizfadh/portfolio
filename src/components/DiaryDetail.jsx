@@ -72,7 +72,7 @@ function DiaryDetail() {
             <Head title={title} desc={linkDesc} imageURL={imageURL} />
             <img
                 src={imageURL}
-                className='img-fluid w-100 rounded object-fit-cover mb-3 article-image-height image-skeleton shadow-sm'
+                className='w-100 rounded object-fit-cover mb-3 article-image-height image-skeleton shadow-sm'
                 loading='lazy'
                 alt={title}
             />
