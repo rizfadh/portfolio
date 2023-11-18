@@ -9,7 +9,7 @@ export default function ProjectItem({ imgUrl, title, body, link }) {
                     alt={title}
                 />
                 <div className='card-body'>
-                    <p className='card-title fs-5'>{title}</p>
+                    <p className='card-title fs-5 fw-bold'>{title}</p>
                     <p className='card-text'>{body}</p>
                     <a
                         href={link}
