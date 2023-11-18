@@ -34,20 +34,22 @@ function EditDiary() {
         <article>
             <section>
                 <div className='container'>
-                    <Title className='text-center text-lg-start mb-4'>
-                        Edit{' '}
-                        <span className='text-primary font-script fw-normal'>
-                            Diary
-                        </span>
-                    </Title>
-                    <DiaryForm
-                        method='put'
-                        action={`/edit/${id}`}
-                        imageName={imageName}
-                        imageURL={imageURL}
-                        title={title}
-                        desc={desc}
-                    />
+                    <div className='px-article'>
+                        <Title className='text-center text-lg-start mb-4'>
+                            Edit{' '}
+                            <span className='text-primary font-script fw-normal'>
+                                Diary
+                            </span>
+                        </Title>
+                        <DiaryForm
+                            method='put'
+                            action={`/edit/${id}`}
+                            imageName={imageName}
+                            imageURL={imageURL}
+                            title={title}
+                            desc={desc}
+                        />
+                    </div>
                 </div>
             </section>
         </article>

@@ -20,7 +20,9 @@ export default function CertificatesItem({
                     <div className='col col-lg-9'>
                         <div className='d-flex h-100 align-items-center'>
                             <div className='card-body'>
-                                <p className='card-title fs-5'>{title}</p>
+                                <p className='card-title fs-5 fw-bold'>
+                                    {title}
+                                </p>
                                 <p className='card-text'>
                                     {from} ({issueDate})
                                 </p>

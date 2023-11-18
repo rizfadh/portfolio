@@ -40,7 +40,7 @@ function Portfolio() {
                                         Android and Front-End Web Developer
                                     </small>
                                 </p>
-                                <p className='lh-lg'>
+                                <p className='lh-lg text-justify'>
                                     I am a student majoring in Informatics
                                     Engineering at Pancasila University. I have
                                     a solid foundation in design and
