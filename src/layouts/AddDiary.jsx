@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useActionData, useNavigate } from 'react-router-dom'
 import DiaryForm from '../components/DiaryForm'
 import Title from '../components/Title'
-import { SwalAlert } from '../../utils/alert'
+import { SwalAlert } from '../utils/alert'
 
 function AddDiary() {
     const data = useActionData()

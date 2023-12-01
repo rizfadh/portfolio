@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
 import { id as idn } from 'date-fns/locale'
-import { getReadingTime } from '../../utils/local'
+import { getReadingTime } from '../utils/local'
 
 export default function DiaryItem({
     id,

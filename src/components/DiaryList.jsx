@@ -1,6 +1,6 @@
 import DiaryItem from './DiaryItem'
 import { useQuery } from 'react-query'
-import { getDiariesQuery } from '../../utils/api'
+import { getDiariesQuery } from '../utils/api'
 
 export default function DiaryList() {
     const { data } = useQuery(getDiariesQuery())
