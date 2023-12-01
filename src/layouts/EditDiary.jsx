@@ -3,8 +3,8 @@ import { useActionData, useNavigate, useParams } from 'react-router-dom'
 import DiaryForm from '../components/DiaryForm'
 import Title from '../components/Title'
 import { useQuery } from 'react-query'
-import { getDiaryQuery } from '../../utils/api'
-import { SwalAlert } from '../../utils/alert'
+import { getDiaryQuery } from '../utils/api'
+import { SwalAlert } from '../utils/alert'
 
 function EditDiary() {
     const { id } = useParams()

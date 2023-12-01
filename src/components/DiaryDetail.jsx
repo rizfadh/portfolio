@@ -5,7 +5,7 @@ import { format, parseISO } from 'date-fns'
 import { id as idn } from 'date-fns/locale'
 import { useQuery, useQueryClient } from 'react-query'
 import parse from 'html-react-parser'
-import { deleteDiaryAction, getDiaryQuery } from '../../utils/api'
+import { deleteDiaryAction, getDiaryQuery } from '../utils/api'
 import {
     Link,
     useNavigate,
@@ -13,13 +13,16 @@ import {
     useParams,
 } from 'react-router-dom'
 import Head from './Head'
-import { SwalAlert } from '../../utils/alert'
+import { SwalAlert } from '../utils/alert'
 import {
     getDescriptionString,
     getReadingTime,
     shareArticle,
-} from '../../utils/local'
+} from '../utils/local'
 import '../css/content-styles.css'
+import hljs from '../utils/code-highlight'
+import 'highlight.js/styles/tomorrow-night-bright.css'
+import { useEffect } from 'react'
 
 function DiaryDetail() {
     const { id } = useParams()
@@ -29,6 +32,10 @@ function DiaryDetail() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
     const linkDesc = getDescriptionString(desc, 30)
+
+    useEffect(() => {
+        hljs.highlightAll()
+    }, [])
 
     const deleteDiaryHandler = ({
         id,

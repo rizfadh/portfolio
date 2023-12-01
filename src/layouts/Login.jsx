@@ -6,11 +6,11 @@ import {
 } from 'react-router-dom'
 import Title from '../components/Title'
 import { MdMail, MdPassword } from 'react-icons/md'
-import { setAccessToken } from '../../utils/local'
+import { setAccessToken } from '../utils/local'
 import CONSTANTS from '../global/constants'
 import { useEffect } from 'react'
 import Head from '../components/Head'
-import { SwalAlert } from '../../utils/alert'
+import { SwalAlert } from '../utils/alert'
 
 function Login() {
     const data = useActionData()

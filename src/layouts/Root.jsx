@@ -3,9 +3,8 @@ import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import CONSTANTS from '../global/constants'
-import { getAccessToken } from '../../utils/local'
+import { getAccessToken } from '../utils/local'
 import { BarLoader } from 'react-spinners'
-import Cursor from '../components/Cursor'
 
 function Root() {
     const DARK_THEME_KEY = CONSTANTS.DARK_THEME_KEY

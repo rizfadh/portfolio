@@ -1,4 +1,4 @@
-import CONSTANTS from '../src/global/constants'
+import CONSTANTS from '../global/constants'
 import { getAccessToken, setAccessToken } from './local'
 import { imagesRef } from './firebaseConfig'
 import {

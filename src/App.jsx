@@ -10,7 +10,7 @@ import {
     diaryLoader,
     editDiaryAction,
     loginAction,
-} from '../utils/api'
+} from './utils/api'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { HelmetProvider } from 'react-helmet-async'
 import Root from './layouts/Root'
