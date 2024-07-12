@@ -11,7 +11,6 @@ import {
   SiTypescript,
   SiPrisma,
   SiTailwindcss,
-  SiShadcnui,
   SiBootstrap,
 } from "react-icons/si"
 
@@ -57,10 +56,6 @@ const skills = [
   {
     title: "TailwindCSS",
     Icon: SiTailwindcss,
-  },
-  {
-    title: "ShadcnUI",
-    Icon: SiShadcnui,
   },
   {
     title: "Bootstrap",
